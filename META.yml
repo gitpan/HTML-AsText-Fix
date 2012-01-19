@@ -1,0 +1,33 @@
+---
+abstract: 'extends HTML::Element::as_text() to render text properly'
+author:
+  - 'Stanislaw Pusep <stas@sysd.org>'
+build_requires:
+  English: 0
+  File::Find: 0
+  File::Temp: 0
+  Test::More: 0
+  Test::Requires: 0
+  constant: 0
+  perl: 5.006
+  utf8: 0
+  warnings: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: HTML-AsText-Fix
+requires:
+  HTML::Tree: 0
+  Monkey::Patch: 0
+  perl: 5.008
+  strict: 0
+resources:
+  bugtracker: https://github.com/creaktive/HTML-AsText-Fix/issues
+  homepage: https://github.com/creaktive/HTML-AsText-Fix
+  repository: git://github.com/creaktive/HTML-AsText-Fix.git
+version: 0.001
