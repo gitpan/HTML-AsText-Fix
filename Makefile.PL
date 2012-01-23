@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "Monkey::Patch" => 0,
     "strict" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }

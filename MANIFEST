@@ -6,10 +6,12 @@ META.yml
 Makefile.PL
 README
 dist.ini
+inc/GenerateTest.pm
 lib/HTML/AsText/Fix.pm
 t/00-compile.t
 t/00-load.t
 t/10-simple.t
+t/20-full.t
 t/author-critic.t
 t/author-test-eol.t
 t/release-cpan-changes.t
@@ -26,4 +28,6 @@ t/release-portability.t
 t/release-synopsis.t
 t/release-test-version.t
 t/release-unused-vars.t
+t/test.html
+t/test.txt
 weaver.ini

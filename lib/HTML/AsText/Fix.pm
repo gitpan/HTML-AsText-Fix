@@ -6,7 +6,7 @@ use strict;
 use HTML::Tree;
 use Monkey::Patch qw(:all);
 
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 
 my $block_tags = {
@@ -118,15 +118,15 @@ HTML::AsText::Fix - extends HTML::Element::as_text() to render text properly
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
-# fix individual objects
+    # fix individual objects
     my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
     my $guard = HTML::AsText::Fix::object($tree);
 
-# fix deeply nested objects
+    # fix deeply nested objects
     use URI;
     use Web::Scraper;
 

@@ -3,14 +3,16 @@ NAME
     properly
 
 VERSION
-    version 0.001
+    version 0.002
 
 SYNOPSIS
-    # fix individual objects my $tree =
-    HTML::TreeBuilder::XPath->new_from_content($html); my $guard =
-    HTML::AsText::Fix::object($tree);
+        # fix individual objects
+        my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
+        my $guard = HTML::AsText::Fix::object($tree);
 
-    # fix deeply nested objects use URI; use Web::Scraper;
+        # fix deeply nested objects
+        use URI;
+        use Web::Scraper;
 
         # First, create your scraper block
         my $tweets = scraper {
