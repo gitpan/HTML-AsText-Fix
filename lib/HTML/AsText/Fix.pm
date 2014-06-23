@@ -2,11 +2,12 @@ package HTML::AsText::Fix;
 # ABSTRACT: extends HTML::Element::as_text() to render text properly
 
 use strict;
+use warnings;
 
 use HTML::Tree;
 use Monkey::Patch qw(:all);
 
-our $VERSION = '0.002'; # VERSION
+our $VERSION = '0.003'; # VERSION
 
 
 my $block_tags = {
@@ -77,9 +78,9 @@ sub as_text {
 
     if ( $options{'trim'} ) {
         my $extra_chars = $options{'extra_chars'} || '';
-        $text =~ s/[\n\r\f\t\x{a0}$extra_chars ]+$//s;
-        $text =~ s/^[\n\r\f\t\x{a0}$extra_chars ]+//s;
-        $text =~ s/[\x{a0}$extra_chars ]/ /g;
+        $text =~ s/[\n\r\f\t\x{a0}${extra_chars}\x{20}]+$//sx;
+        $text =~ s/^[\n\r\f\t\x{a0}${extra_chars}\x{20}]+//sx;
+        $text =~ s/[\x{a0}${extra_chars}\x{20}]/ /gx;
     }
 
     return $text;
@@ -88,7 +89,7 @@ sub as_text {
 
 sub global {
     my ( %options ) = @_;
-    patch_package 'HTML::Element', as_text => sub {
+    return patch_package 'HTML::Element', as_text => sub {
         shift; # $original
         as_text( @_, %options );
     };
@@ -97,7 +98,7 @@ sub global {
 
 sub object {
     my ( $obj, %options ) = @_;
-    patch_object $obj, as_text => sub {
+    return patch_object $obj, as_text => sub {
         shift; # $original
         my $self = shift;
         as_text( $self, @_, %options );
@@ -108,9 +109,10 @@ sub object {
 1;
 
 __END__
+
 =pod
 
-=encoding utf8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -118,7 +120,7 @@ HTML::AsText::Fix - extends HTML::Element::as_text() to render text properly
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -340,10 +342,9 @@ Stanislaw Pusep <stas@sysd.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Stanislaw Pusep.
+This software is copyright (c) 2014 by Stanislaw Pusep.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
